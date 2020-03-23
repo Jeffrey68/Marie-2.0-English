@@ -70,3 +70,9 @@ class Poll(TelegramObject):
         data['options'] = [x.to_dict() for x in self.options]
 
         return data
+
+__mod_name__ = "Poll"
+
+__help__ = """
+ - 
+"""
