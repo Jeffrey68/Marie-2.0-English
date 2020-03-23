@@ -66,6 +66,7 @@ RUN_STRINGS = (
     "Han shot first. So will I.",
     "What are you running after, a white rabbit?",
     "As The Doctor would say... RUN!",
+    "Nathan is my bae",
 )
 
 SLAP_TEMPLATES = (
