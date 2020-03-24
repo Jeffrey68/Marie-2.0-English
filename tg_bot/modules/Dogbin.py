@@ -10,9 +10,9 @@ from telegram.ext import CommandHandler, run_async, Filters
 from telegram.error import BadRequest
 from telegram.utils.helpers import escape_markdown
 
-from SkyButler import dispatcher
-from SkyButler.modules.disable import DisableAbleCommandHandler
-from SkyButler.modules.translations.strings import sbt
+from tg_bot import dispatcher
+from tg_bot.modules.disable import DisableAbleCommandHandler
+from tg_bot.modules.translations.strings import sbt
 
 BASE_URL = 'https://del.dog'
 
