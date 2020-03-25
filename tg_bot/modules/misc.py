@@ -82,6 +82,16 @@ HUG_TEMPLATES = (
     "{user1} pinches {user2} with love"
 )
 
+KISS_TEMPLATES = (
+    "{user1} kisses {user2} with passion.",
+    "{user1} kisses {user2} with comfort.",
+    "{user1} kisses {user2} with love",
+    "{user1} blows {user2} a kiss",
+    "{user1} kisses {user2} passionately",
+    "{user1} pins {user2} down and fills them with love",
+    "{user1} fills {user2} with love"
+)
+
 SLAP_TEMPLATES = (
     "{user1} {hits} {user2} with a {item}.",
     "{user1} {hits} {user2} in the face with a {item}.",
@@ -220,6 +230,40 @@ def hug(bot: Bot, update: Update, args: List[str]):
         user2 = curr_user
 
     temp = random.choice(HUG_TEMPLATES)
+    
+    repl = temp.format(user1=user1, user2=user2)
+
+    reply_text(repl, parse_mode=ParseMode.MARKDOWN)
+
+@run_async
+def kiss(bot: Bot, update: Update, args: List[str]):
+    msg = update.effective_message  # type: Optional[Message]
+
+    # reply to correct message
+    reply_text = msg.reply_to_message.reply_text if msg.reply_to_message else msg.reply_text
+
+    # get user who sent message
+    if msg.from_user.username:
+        curr_user = "@" + escape_markdown(msg.from_user.username)
+    else:
+        curr_user = "[{}](tg://user?id={})".format(msg.from_user.first_name, msg.from_user.id)
+
+    user_id = extract_user(update.effective_message, args)
+    if user_id:
+        kissed_user = bot.get_chat(user_id)
+        user1 = curr_user
+        if kissed_user.username:
+            user2 = "@" + escape_markdown(kissed_user.username)
+        else:
+            user2 = "[{}](tg://user?id={})".format(kissed_user.first_name,
+                                                   kissed_user.id)
+
+    # if no target found, bot targets the sender
+    else:
+        user1 = "[{}](tg://user?id={})".format(bot.first_name, bot.id)
+        user2 = curr_user
+
+    temp = random.choice(KISS_TEMPLATES)
     
     repl = temp.format(user1=user1, user2=user2)
 
