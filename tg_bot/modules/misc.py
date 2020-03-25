@@ -512,6 +512,7 @@ __help__ = """
  - /runs: reply a random string from an array of replies.
  - /slap: slap a user, or get slapped if not a reply.
  - /hug: hug a user, or get hugged if not a reply.
+ - /kiss: kiss a user, or get kissed if there is no reply. Make people feel loved!
  - /time <place>: gives the local time at the given place.
  - /info: get information about a user.
  - /gdpr: deletes your information from the bot's database. Private chats only.
