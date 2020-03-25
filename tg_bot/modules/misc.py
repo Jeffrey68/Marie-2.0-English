@@ -531,6 +531,7 @@ TIME_HANDLER = CommandHandler("time", get_time, pass_args=True)
 
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap, pass_args=True)
+KISS_HANDLER = DisableAbleCommandHandler("kiss", kiss, pass_args=True)
 HUG_HANDLER = DisableAbleCommandHandler("hug", hug, pass_args=True)
 INFO_HANDLER = DisableAbleCommandHandler("info", info, pass_args=True)
 
