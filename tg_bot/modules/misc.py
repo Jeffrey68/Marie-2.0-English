@@ -79,7 +79,7 @@ HUG_TEMPLATES = (
     "{user1} hugs {user2} with kindness",
     "{user1} pinches {user2} with kindness.",
     "{user1} pinches {user2} warmly",
-    "{user1} pinches {user2} with love"
+    "{user1} pinches {user2} with love",
 )
 
 KISS_TEMPLATES = (
@@ -89,7 +89,7 @@ KISS_TEMPLATES = (
     "{user1} blows {user2} a kiss",
     "{user1} kisses {user2} passionately",
     "{user1} pins {user2} down and fills them with love",
-    "{user1} fills {user2} with love"
+    "{user1} fills {user2} with love",
 )
 
 SLAP_TEMPLATES = (
@@ -104,21 +104,21 @@ SLAP_TEMPLATES = (
     "{user1} grabs up a {item} and {hits} {user2} with it.",
     "{user1} ties {user2} to a chair and {throws} a {item} at them.",
     "{user1} gave a friendly push to help {user2} learn to swim in lava.",
-    "{user1} punches {user2} with {item}"
+    "{user1} punches {user2} with {item}",
 )
 
 KILL_TEMPLATES = (
     "{user1} stabs {user2} and leaves them to bleed out.",
     "{user1} grabs a gun and shoots {user2} in the head.",
-    "{user2} gets shot in the head by {user2} using a {Guns}",
+    "{user2} gets shot in the head by {user2} using a {guns}",
     "{user1} kills {user2}",
-    "{user1} grabs a {Melee} and puts it through the skull of {user2}",
+    "{user1} grabs a {melee} and puts it through the skull of {user2}",
     "{user1} makes sure {user2} isn't breathing",
     "{user2} got pushed into lava by {user1}",
     "{user1} drowns {user2}",
     "{user2} bled out whilst trying to fight {user2}",
     "{user1} brutally murders {user2}",
-    "{user1} kills {user2} in cold blood."
+    "{user1} kills {user2} in cold blood.",
 )
 
 ITEMS = (
@@ -165,11 +165,11 @@ MELEE = (
     "Spear",
     "Tomahawk",
     "Cricket Bat",
-    "Golf Club"
+    "Golf Club",
 )
 
 GUNS = (
-    "AK-47"
+    "AK-47",
 )
 
 THROW = (
@@ -262,10 +262,10 @@ def kill(bot: Bot, update: Update, args: List[str]):
         user2 = curr_user
 
     temp = random.choice(SLAP_TEMPLATES)
-    Melee = random.choice(MELEE)
-    Guns = random.choice(GUNS)
+    melee = random.choice(MELEE)
+    guns = random.choice(GUNS)
 
-    repl = temp.format(user1=user1, user2=user2, Guns=Guns, Melee=Melee)
+    repl = temp.format(user1=user1, user2=user2, guns=Guns, melee=Melee)
 
     reply_text(repl, parse_mode=ParseMode.MARKDOWN)
     
