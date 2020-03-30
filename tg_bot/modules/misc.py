@@ -120,6 +120,9 @@ KILL_TEMPLATES = (
     "{user1} brutally murders {user2}",
     "{user1} kills {user2} in cold blood.",
     "{user1} gave {user2} poison and they died.",
+    "{user1} put {user2} in a machine and got crushed",
+    "{user1} killed {user2} with magic",
+    "{user1} made {user2} vanish into nothing",
 )
 
 ITEMS = (
