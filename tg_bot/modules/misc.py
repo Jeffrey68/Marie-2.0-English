@@ -119,7 +119,7 @@ KILL_TEMPLATES = (
     "{user2} bled out whilst trying to fight {user2}",
     "{user1} brutally murders {user2}",
     "{user1} kills {user2} in cold blood.",
-    "{user1} gave {user2} and they died.",
+    "{user1} gave {user2} poison and they died.",
 )
 
 ITEMS = (
