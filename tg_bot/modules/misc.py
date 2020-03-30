@@ -247,7 +247,7 @@ def kill(bot: Bot, update: Update, args: List[str]):
         user2 = curr_user
 
     temp = random.choice(KILL_TEMPLATES)
-    melee = random.chouce(MELEE)
+    melee = random.choice(MELEE)
 
     repl = temp.format(user1=user1, user2=user2, melee=melee)
 
