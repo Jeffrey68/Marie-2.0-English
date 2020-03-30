@@ -191,10 +191,6 @@ HIT = (
     "bashes",
 )
 
-SMITE = (
-    "{user1} has been smitten by [God](tg://user?id={})",
-)
-
 GMAPS_LOC = "https://maps.googleapis.com/maps/api/geocode/json"
 GMAPS_TIME = "https://maps.googleapis.com/maps/api/timezone/json"
 
@@ -275,41 +271,6 @@ def kill(bot: Bot, update: Update, args: List[str]):
     repl = temp.format(user1=user1, user2=user2, melee=melee)
 
     reply_text(repl, parse_mode=ParseMode.MARKDOWN)
-    
-@run_async
-def smite(bot: Bot, update: Update, args: List[str]):
-    msg = update.effective_message  # type: Optional[Message]
-
-    # reply to correct message
-    reply_text = msg.reply_to_message.reply_text if msg.reply_to_message else msg.reply_text
-
-    # get user who sent message
-    if msg.from_user.username:
-        curr_user = "@" + escape_markdown(msg.from_user.username)
-    else:
-        curr_user = "[{}](tg://user?id={})".format(msg.from_user.first_name, msg.from_user.id)
-
-    user_id = extract_user(update.effective_message, args)
-    if user_id:
-        killed_user = bot.get_chat(user_id)
-        user1 = curr_user
-        if killed_user.username:
-            user2 = "@" + escape_markdown(smitten_user.username)
-        else:
-            user2 = "[{}](tg://user?id={})".format(smitten_user.first_name,
-                                                   smitten_user.id)
-
-    # if no target found, bot targets the sender
-    else:
-        user1 = "[{}](tg://user?id={})".format(bot.first_name, bot.id)
-        user2 = curr_user
-
-    temp = random.choice(SMITE)
-
-    repl = temp.format(user1=user1)
-
-    reply_text(repl, parse_mode=ParseMode.MARKDOWN)
-    
 
 @run_async
 def hug(bot: Bot, update: Update, args: List[str]):
@@ -642,7 +603,6 @@ TIME_HANDLER = CommandHandler("time", get_time, pass_args=True)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap, pass_args=True)
 KISS_HANDLER = DisableAbleCommandHandler("kiss", kiss, pass_args=True)
-SMITE_HANDLER = DisableAbleCommandHandler("smite", smite, pass_args=True)
 KILL_HANDLER = DisableAbleCommandHandler("kill", kill, pass_args=True)
 HUG_HANDLER = DisableAbleCommandHandler("hug", hug, pass_args=True)
 INFO_HANDLER = DisableAbleCommandHandler("info", info, pass_args=True)
@@ -661,7 +621,6 @@ dispatcher.add_handler(ID_HANDLER)
 dispatcher.add_handler(IP_HANDLER)
 dispatcher.add_handler(TIME_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
-dispatcher.add_handler(SMITE_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
 dispatcher.add_handler(KISS_HANDLER)
 dispatcher.add_handler(KILL_HANDLER)
