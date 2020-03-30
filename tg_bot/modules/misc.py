@@ -238,7 +238,7 @@ def kill(bot: Bot, update: Update, args: List[str]):
                                                    killed_user.id)
 
     # if no target found, bot targets the sender
-    else
+    else:
         user1 = "[{}](tg://user?id={})".format(bot.first_name, bot.id)
         user2 = curr_user
 
