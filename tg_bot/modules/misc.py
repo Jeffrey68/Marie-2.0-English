@@ -125,7 +125,7 @@ KILL_TEMPLATES = (
     "{user1} killed {user2} with magic",
     "{user1} made {user2} vanish into nothing",
     "{user1} snapped {user2} into dust.",
-    "{user1} cooked {user2} for his dinner",
+    "{user1} cooked {user2} for their dinner",
     "{user1} pushes {user2} face first onto spikes.",
 )
 
