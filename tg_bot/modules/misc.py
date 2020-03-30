@@ -107,6 +107,20 @@ SLAP_TEMPLATES = (
     "{user1} punches {user2} with {item}"
 )
 
+KILL_TEMPLATES = (
+    "{user1} stabs {user2} and leaves them to bleed out."
+    "{user1} grabs a gun and shoots {user2} in the head."
+    "{user2} gets shot in the head by {user2} using a {Guns}"
+    "{user1} kills {user2}"
+    "{user1} grabs a {Melee} and puts it through the skull of {user2}"
+    "{user1} makes sure {user2} isn't breathing"
+    "{user2} got pushed into lava by {user1}"
+    "{user1} drowns {user2}"
+    "{user2} bled out whilst trying to fight {user2}"
+    "{user1} brutally murders {user2}"
+    "{user1} kills {user2} in cold blood."
+)
+
 ITEMS = (
     "cast iron skillet",
     "large trout",
@@ -137,6 +151,25 @@ ITEMS = (
     "piece of rotten meat",
     "bear",
     "ton of bricks",
+)
+
+Melee = (
+    "Sword"
+    "Katana"
+    "Knife"
+    "Machete"
+    "Hatchet"
+    "Pickaxe"
+    "Dagger"
+    "Pike"
+    "Spear"
+    "Tomahawk"
+    "Cricket Bat"
+    "Golf Club"
+)
+
+Guns = (
+    "AK-47"
 )
 
 THROW = (
@@ -197,6 +230,42 @@ def slap(bot: Bot, update: Update, args: List[str]):
     throw = random.choice(THROW)
 
     repl = temp.format(user1=user1, user2=user2, item=item, hits=hit, throws=throw)
+
+    reply_text(repl, parse_mode=ParseMode.MARKDOWN)
+    
+@run_async
+def kill(bot: Bot, update: Update, args: List[str]):
+    msg = update.effective_message  # type: Optional[Message]
+
+    # reply to correct message
+    reply_text = msg.reply_to_message.reply_text if msg.reply_to_message else msg.reply_text
+
+    # get user who sent message
+    if msg.from_user.username:
+        curr_user = "@" + escape_markdown(msg.from_user.username)
+    else:
+        curr_user = "[{}](tg://user?id={})".format(msg.from_user.first_name, msg.from_user.id)
+
+    user_id = extract_user(update.effective_message, args)
+    if user_id:
+        killed_user = bot.get_chat(user_id)
+        user1 = curr_user
+        if killed_user.username:
+            user2 = "@" + escape_markdown(killed_user.username)
+        else:
+            user2 = "[{}](tg://user?id={})".format(killed_user.first_name,
+                                                   killed_user.id)
+
+    # if no target found, bot targets the sender
+    else:
+        user1 = "[{}](tg://user?id={})".format(bot.first_name, bot.id)
+        user2 = curr_user
+
+    temp = random.choice(SLAP_TEMPLATES)
+    Melee = random.choice(Melee)
+    Guns = random.choice(Guns)
+
+    repl = temp.format(user1=user1, user2=user2, Guns=Guns, Melee=Melee)
 
     reply_text(repl, parse_mode=ParseMode.MARKDOWN)
     
@@ -519,7 +588,7 @@ __help__ = """
  - /markdownhelp: quick summary of how markdown works in telegram - can only be called in private chats.
  - /stickerid: reply to a sticker and get sticker id of that.
  - /getsticker: reply to a sticker and get that sticker as .png and image. 
- 
+ - /kill: kill someone that you truly hate.
 """
 
 __mod_name__ = "Misc"
@@ -532,6 +601,7 @@ TIME_HANDLER = CommandHandler("time", get_time, pass_args=True)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap, pass_args=True)
 KISS_HANDLER = DisableAbleCommandHandler("kiss", kiss, pass_args=True)
+KILL_HANDLER = DisableAbleCommandHandler("kill", kill, pass_args=True)
 HUG_HANDLER = DisableAbleCommandHandler("hug", hug, pass_args=True)
 INFO_HANDLER = DisableAbleCommandHandler("info", info, pass_args=True)
 
@@ -551,6 +621,7 @@ dispatcher.add_handler(TIME_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
 dispatcher.add_handler(KISS_HANDLER)
+dispatcher.add_handler(KILL_HANDLER)
 dispatcher.add_handler(INFO_HANDLER)
 dispatcher.add_handler(HUG_HANDLER)
 dispatcher.add_handler(ECHO_HANDLER)
