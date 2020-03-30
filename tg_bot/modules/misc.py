@@ -105,6 +105,7 @@ SLAP_TEMPLATES = (
     "{user1} ties {user2} to a chair and {throws} a {item} at them.",
     "{user1} gave a friendly push to help {user2} learn to swim in lava.",
     "{user1} punches {user2} with {item}",
+    "{user1} slams the door at {user2}'s face",
 )
 
 KILL_TEMPLATES = (
@@ -124,6 +125,7 @@ KILL_TEMPLATES = (
     "{user1} killed {user2} with magic",
     "{user1} made {user2} vanish into nothing",
     "{user1} snapped {user2} into dust.",
+    "{user1} cooked {user2} for his dinner",
 )
 
 ITEMS = (
