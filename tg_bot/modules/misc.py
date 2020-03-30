@@ -153,7 +153,7 @@ ITEMS = (
     "ton of bricks",
 )
 
-Melee = (
+MELEE = (
     "Sword"
     "Katana"
     "Knife"
@@ -168,7 +168,7 @@ Melee = (
     "Golf Club"
 )
 
-Guns = (
+GUNS = (
     "AK-47"
 )
 
@@ -262,10 +262,10 @@ def kill(bot: Bot, update: Update, args: List[str]):
         user2 = curr_user
 
     temp = random.choice(SLAP_TEMPLATES)
-    Melee = random.choice(Melee)
-    Guns = random.choice(Guns)
+    Melee = random.choice(MELEE)
+    Guns = random.choice(GUNS)
 
-    repl = temp.format(user1=user1, user2=user2, Guns=Guns, Melee=Melee)
+    repl = temp.format(user1=user1, user2=user2, Guns=GUNS, Melee=MELEE)
 
     reply_text(repl, parse_mode=ParseMode.MARKDOWN)
     
