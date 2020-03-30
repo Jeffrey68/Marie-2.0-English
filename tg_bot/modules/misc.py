@@ -110,7 +110,7 @@ SLAP_TEMPLATES = (
 KILL_TEMPLATES = (
     "{user1} stabs {user2} and leaves them to bleed out.",
     "{user1} grabs a gun and shoots {user2} in the head.",
-    "{user2} gets shot in the head by {user2} using a {guns}",
+    "{user2} gets shot in the head by {user2}",
     "{user1} kills {user2}",
     "{user1} grabs a {melee} and puts it through the skull of {user2}",
     "{user1} makes sure {user2} isn't breathing",
@@ -166,10 +166,6 @@ MELEE = (
     "Tomahawk",
     "Cricket Bat",
     "Golf Club",
-)
-
-GUNS = (
-    "AK-47",
 )
 
 THROW = (
@@ -263,9 +259,8 @@ def kill(bot: Bot, update: Update, args: List[str]):
 
     temp = random.choice(SLAP_TEMPLATES)
     melee = random.choice(MELEE)
-    guns = random.choice(GUNS)
 
-    repl = temp.format(user1=user1, user2=user2, guns=guns, melee=melee)
+    repl = temp.format(user1=user1, user2=user2, melee=melee)
 
     reply_text(repl, parse_mode=ParseMode.MARKDOWN)
     
