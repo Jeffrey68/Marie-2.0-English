@@ -108,16 +108,16 @@ SLAP_TEMPLATES = (
 )
 
 KILL_TEMPLATES = (
-    "{user1} stabs {user2} and leaves them to bleed out."
-    "{user1} grabs a gun and shoots {user2} in the head."
-    "{user2} gets shot in the head by {user2} using a {Guns}"
-    "{user1} kills {user2}"
-    "{user1} grabs a {Melee} and puts it through the skull of {user2}"
-    "{user1} makes sure {user2} isn't breathing"
-    "{user2} got pushed into lava by {user1}"
-    "{user1} drowns {user2}"
-    "{user2} bled out whilst trying to fight {user2}"
-    "{user1} brutally murders {user2}"
+    "{user1} stabs {user2} and leaves them to bleed out.",
+    "{user1} grabs a gun and shoots {user2} in the head.",
+    "{user2} gets shot in the head by {user2} using a {Guns}",
+    "{user1} kills {user2}",
+    "{user1} grabs a {Melee} and puts it through the skull of {user2}",
+    "{user1} makes sure {user2} isn't breathing",
+    "{user2} got pushed into lava by {user1}",
+    "{user1} drowns {user2}",
+    "{user2} bled out whilst trying to fight {user2}",
+    "{user1} brutally murders {user2}",
     "{user1} kills {user2} in cold blood."
 )
 
@@ -154,17 +154,17 @@ ITEMS = (
 )
 
 MELEE = (
-    "Sword"
-    "Katana"
-    "Knife"
-    "Machete"
-    "Hatchet"
-    "Pickaxe"
-    "Dagger"
-    "Pike"
-    "Spear"
-    "Tomahawk"
-    "Cricket Bat"
+    "Sword",
+    "Katana",
+    "Knife",
+    "Machete",
+    "Hatchet",
+    "Pickaxe",
+    "Dagger",
+    "Pike",
+    "Spear",
+    "Tomahawk",
+    "Cricket Bat",
     "Golf Club"
 )
 
@@ -265,7 +265,7 @@ def kill(bot: Bot, update: Update, args: List[str]):
     Melee = random.choice(MELEE)
     Guns = random.choice(GUNS)
 
-    repl = temp.format(user1=user1, user2=user2, Guns=GUNS, Melee=MELEE)
+    repl = temp.format(user1=user1, user2=user2, Guns=Guns, Melee=Melee)
 
     reply_text(repl, parse_mode=ParseMode.MARKDOWN)
     
