@@ -112,7 +112,7 @@ KILL_TEMPLATES = (
     "{user1} grabs a gun and shoots {user2} in the head.",
     "{user2} gets shot in the head by {user2}",
     "{user1} kills {user2}",
-    "{user1} grabs a weapon and puts it through the skull of {user2}",
+    "{user1} grabs a {melee} and puts it through the skull of {user2}",
     "{user1} makes sure {user2} isn't breathing",
     "{user2} got pushed into lava by {user1}",
     "{user1} drowns {user2}",
@@ -238,13 +238,14 @@ def kill(bot: Bot, update: Update, args: List[str]):
                                                    killed_user.id)
 
     # if no target found, bot targets the sender
-    else:
+    else
         user1 = "[{}](tg://user?id={})".format(bot.first_name, bot.id)
         user2 = curr_user
 
-    temp = random.choice(SLAP_TEMPLATES)
+    temp = random.choice(KILL_TEMPLATES)
+    melee = random.chouce(MELEE)
 
-    repl = temp.format(user1=user1, user2=user2)
+    repl = temp.format(user1=user1, user2=user2, melee=melee)
 
     reply_text(repl, parse_mode=ParseMode.MARKDOWN)
     
