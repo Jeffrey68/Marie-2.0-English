@@ -153,6 +153,10 @@ ITEMS = (
     "ton of bricks",
 )
 
+MELEE = (
+    "hatchet",
+)
+
 THROW = (
     "throws",
     "flings",
