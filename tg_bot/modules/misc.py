@@ -126,6 +126,7 @@ KILL_TEMPLATES = (
     "{user1} made {user2} vanish into nothing",
     "{user1} snapped {user2} into dust.",
     "{user1} cooked {user2} for his dinner",
+    "{user1} pushes {user2} face first onto spikes.",
 )
 
 ITEMS = (
