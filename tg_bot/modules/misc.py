@@ -111,7 +111,7 @@ SLAP_TEMPLATES = (
 KILL_TEMPLATES = (
     "{user1} stabs {user2} and leaves them to bleed out.",
     "{user1} grabs a gun and shoots {user2} in the head.",
-    "{user2} gets shot in the head by {user2}",
+    "{user2} gets shot in the head by {user1}",
     "{user1} kills {user2}",
     "{user1} grabs a {melee} and puts it through the skull of {user2}",
     "{user1} makes sure {user2} isn't breathing",
