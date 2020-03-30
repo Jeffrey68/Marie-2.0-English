@@ -265,7 +265,7 @@ def kill(bot: Bot, update: Update, args: List[str]):
     melee = random.choice(MELEE)
     guns = random.choice(GUNS)
 
-    repl = temp.format(user1=user1, user2=user2, guns=Guns, melee=Melee)
+    repl = temp.format(user1=user1, user2=user2, guns=guns, melee=melee)
 
     reply_text(repl, parse_mode=ParseMode.MARKDOWN)
     
