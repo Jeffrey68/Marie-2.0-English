@@ -156,6 +156,17 @@ ITEMS = (
 
 MELEE = (
     "hatchet",
+    "sword",
+    "katana",
+    "knife",
+    "machete",
+    "pickaxe",
+    "dagger",
+    "pike",
+    "spear",
+    "tomahawk",
+    "cricket bat",
+    "golf club",
 )
 
 THROW = (
