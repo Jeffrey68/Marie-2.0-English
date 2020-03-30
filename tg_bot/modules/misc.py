@@ -116,7 +116,7 @@ KILL_TEMPLATES = (
     "{user1} makes sure {user2} isn't breathing",
     "{user2} got pushed into lava by {user1}",
     "{user1} drowns {user2}",
-    "{user2} bled out whilst trying to fight {user2}",
+    "{user2} bled out whilst trying to fight {user1}",
     "{user1} brutally murders {user2}",
     "{user1} kills {user2} in cold blood.",
     "{user1} gave {user2} poison and they died.",
