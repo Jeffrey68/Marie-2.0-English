@@ -5,7 +5,7 @@ import math
 import urllib.request as urllib
 
 from io import BytesIO
-from PIL import Image
+
 
 from typing import Optional, List
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
