@@ -18,18 +18,4 @@ pynewtonmath
 bs4
 telegraph
 
-
-requests==2.20.0
-
-googletrans
-Pillow>=4.2.0
-aiohttp>=2.2.5
-pynewtonmath
-psutil
-bleach
-markdown2
-speedtest-cli
-wikipedia
-jikanpy
-coffeehouse
-tswift
+  
