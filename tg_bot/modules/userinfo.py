@@ -29,7 +29,7 @@ def about_me(bot: Bot, update: Update, args: List[str]):
                                             parse_mode=ParseMode.MARKDOWN)
     elif message.reply_to_message:
         username = message.reply_to_message.from_user.first_name
-        update.effective_message.reply_text(username + "Information about him is currently unavailable !")
+        update.effective_message.reply_text(username + "Information about them is currently unavailable !")
     else:
         update.effective_message.reply_text("You have not added any information about yourself yet !")
 
@@ -90,13 +90,13 @@ def set_about_bio(bot: Bot, update: Update):
         if len(bio) == 2:
             if len(bio[1]) < MAX_MESSAGE_LENGTH // 4:
                 sql.set_user_bio(user_id, bio[1])
-                message.reply_text("{} Information about the him has been successfully collected !".format(repl_message.from_user.first_name))
+                message.reply_text("{} Information about them has been successfully collected !".format(repl_message.from_user.first_name))
             else:
                 message.reply_text(
                     "About you {} Must stick to the letter! The number of characters you have just tried {} hm .".format(
                         MAX_MESSAGE_LENGTH // 4, len(bio[1])))
     else:
-        message.reply_text(" His information can only be added if someone's MESSAGE as a REPLY")
+        message.reply_text("Their information can only be added if someone's MESSAGE as a REPLY")
 
 
 def __user_info__(user_id):
