@@ -24,7 +24,9 @@ I'm a group manager bot maintained by  [this person](tg://user?id={}).
 
 For more commands click /help...
 
-**Original Source: https://github.com/PaulSonOfLars/tgbot **
+**[Original Source](https://github.com/PaulSonOfLars/tgbot)**
+**[Support Group](https://t.me/joinchat/K9YCOE4iCyvKQPrEJyaTvg)**
+**[Announcement Channel](https://t.me/joinchat/AAAAAFcsC-4pgraIbFs_Fg)**
 
 """
 
