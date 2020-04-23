@@ -4,7 +4,6 @@ from telegram.ext import run_async, CallbackQueryHandler
 
 from tg_bot import dispatcher, SUDO_USERS
 from tg_bot.modules.disable import DisableAbleCommandHandler
-from tg_bot.modules.helper_funcs.chat_status import sudo_users
 
 def convert(speed):
     return round(int(speed)/1048576, 2)
