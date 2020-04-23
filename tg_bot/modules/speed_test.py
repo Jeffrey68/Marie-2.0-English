@@ -24,7 +24,7 @@ def speedtestxyz_callback(bot: Bot, update: Update):
     query = update.callback_query
 
     if query.from_user.id in SUDO_USERS:
-        msg = update.effective_message.edit_text('Runing a speedtest....') 
+        msg = update.effective_message.edit_text('Running a speedtest....') 
         speed = speedtest.Speedtest()
         speed.get_best_server()
         speed.download()
