@@ -10,7 +10,7 @@ def convert(speed):
     return round(int(speed)/1048576, 2)
 
 
-@SUDO_USERS
+
 @run_async
 def speedtestxyz(bot: Bot, update: Update):
     buttons = [
@@ -24,7 +24,7 @@ def speedtestxyz(bot: Bot, update: Update):
 def speedtestxyz_callback(bot: Bot, update: Update):
     query = update.callback_query
 
-    if query.from_user.id in DEV_USERS:
+    if query.from_user.id in SUDO_USERS:
         msg = update.effective_message.edit_text('Runing a speedtest....') 
         speed = speedtest.Speedtest()
         speed.get_best_server()
