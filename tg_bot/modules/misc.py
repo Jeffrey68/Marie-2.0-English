@@ -577,6 +577,58 @@ def getsticker(bot: Bot, update: Update):
                                             msg.from_user.id) + ", Please reply to sticker message to get sticker image",
                                             parse_mode=ParseMode.MARKDOWN)
 
+@run_async
+def kang(bot: Bot, update: Update):
+    msg = update.effective_message
+    user = update.effective_user
+    if msg.reply_to_message and msg.reply_to_message.sticker:
+        file_id = msg.reply_to_message.sticker.file_id
+        kang_file = bot.get_file(file_id)
+        kang_file.download('kangsticker.png')
+        hash = hashlib.sha1(bytearray(user.id)).hexdigest()
+        packname = "a" + hash[:20] + "_by_"+bot.username
+        if msg.reply_to_message.sticker.emoji:
+            sticker_emoji = msg.reply_to_message.sticker.emoji
+        else:
+            sticker_emoji = "🤔"
+        try:
+            bot.add_sticker_to_set(user_id=user.id, name=packname,
+                                   png_sticker=open('kangsticker.png', 'rb'), emojis=sticker_emoji)
+            msg.reply_text("Sticker successfully added to [pack](t.me/addstickers/%s)" % packname,
+                            parse_mode=ParseMode.MARKDOWN)
+        except TelegramError as e:
+            if e.message == "Stickerset_invalid":
+                makepack_internal(msg, user, open('kangsticker.png', 'rb'), sticker_emoji, bot)
+            print(e)
+        os.remove("kangsticker.png")
+    else:
+        msg.reply_text("Please reply to a sticker for me to kang it.")
+
+def makepack_internal(msg, user, png_sticker, emoji, bot):
+    name = user.first_name
+    name = name[:50]
+    hash = hashlib.sha1(bytearray(user.id)).hexdigest()
+    packname = f"a{hash[:20]}_by_{bot.username}"
+    try:
+        success = bot.create_new_sticker_set(user.id, packname, name + "'s kang pack",
+                                             png_sticker=png_sticker,
+                                             emojis=emoji)
+    except TelegramError as e:
+        print(e)
+        if e.message == "Sticker set name is already occupied":
+            msg.reply_text("Your pack can be found [here](t.me/addstickers/%s)" % packname,
+                           parse_mode=ParseMode.MARKDOWN)
+        elif e.message == "Peer_id_invalid":
+            msg.reply_text("Contact me in PM first.", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
+                text="Start", url=f"t.me/{bot.usename}")]]))
+        return
+
+    if success:
+        msg.reply_text("Sticker pack successfully created. Get it [here](t.me/addstickers/%s)" % packname,
+                       parse_mode=ParseMode.MARKDOWN)
+    else:
+        msg.reply_text("Failed to create sticker pack. Possibly due to blek mejik.")
+
 
 # /ip is for private use
 __help__ = """
@@ -615,11 +667,13 @@ STATS_HANDLER = CommandHandler("stats", stats, filters=CustomFilters.sudo_filter
 GDPR_HANDLER = CommandHandler("gdpr", gdpr, filters=Filters.private)
 STICKERID_HANDLER = DisableAbleCommandHandler("stickerid", stickerid)
 GETSTICKER_HANDLER = DisableAbleCommandHandler("getsticker", getsticker)
+KANG_HANDLER = DisableAbleCommandHandler("kang", kang)
 
 
 dispatcher.add_handler(ID_HANDLER)
 dispatcher.add_handler(IP_HANDLER)
 dispatcher.add_handler(TIME_HANDLER)
+dispatcher.add_handler(KANG_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
 dispatcher.add_handler(KISS_HANDLER)
