@@ -1,4 +1,6 @@
 import html
+import urllib.request as urllib
+import hashlib
 import json
 import random
 from datetime import datetime
