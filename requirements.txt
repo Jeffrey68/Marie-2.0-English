@@ -17,5 +17,6 @@ zalgo_text
 pynewtonmath
 bs4
 telegraph
+speedtest-cli
 
   
