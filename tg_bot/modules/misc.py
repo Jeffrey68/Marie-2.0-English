@@ -2,6 +2,7 @@ import html
 import urllib.request as urllib
 import hashlib
 import json
+import os
 import random
 from datetime import datetime
 from typing import Optional, List
