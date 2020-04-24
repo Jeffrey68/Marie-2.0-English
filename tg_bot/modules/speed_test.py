@@ -31,6 +31,14 @@ def speedtestxyz_callback(bot: Bot, update: Update):
         speed.upload()
         replymsg = 'SpeedTest Results:'
 
+    if query.from_user.id in SUPPORT_USERS:
+        msg = update.effective_message.edit_text('Running a speedtest....') 
+        speed = speedtest.Speedtest()
+        speed.get_best_server()
+        speed.download()
+        speed.upload()
+        replymsg = 'SpeedTest Results:'
+
         if query.data == 'speedtest_image':
             speedtest_image = speed.results.share()
             update.effective_message.reply_photo(photo=speedtest_image, caption=replymsg)
