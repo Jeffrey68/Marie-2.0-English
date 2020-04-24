@@ -696,7 +696,7 @@ STATS_HANDLER = CommandHandler("stats", stats, filters=CustomFilters.sudo_filter
 GDPR_HANDLER = CommandHandler("gdpr", gdpr, filters=Filters.private)
 STICKERID_HANDLER = DisableAbleCommandHandler("stickerid", stickerid)
 GETSTICKER_HANDLER = DisableAbleCommandHandler("getsticker", getsticker)
-KANG_HANDLER = DisableAbleCommandHandler("kang", kang)
+KANG_HANDLER = DisableAbleCommandHandler("kang", kang, pass_args=True)
 
 
 dispatcher.add_handler(ID_HANDLER)
