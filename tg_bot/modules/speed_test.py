@@ -2,7 +2,7 @@ import speedtest
 from telegram import Update, Bot, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import run_async, CallbackQueryHandler
 
-from tg_bot import dispatcher, SUDO_USERS
+from tg_bot import dispatcher, SUDO_USERS, SUPPORT_USERS
 from tg_bot.modules.disable import DisableAbleCommandHandler
 
 def convert(speed):
