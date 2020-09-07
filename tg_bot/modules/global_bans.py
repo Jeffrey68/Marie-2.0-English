@@ -209,9 +209,9 @@ def gbanlist(bot: Bot, update: Update):
         update.effective_message.reply_text("There aren't any gbanned users! You're kinder than I expected...")
         return
 
-    banfile = 'Screw these guys.\n'
+    banfile = 'Screw these potatoes.\n'
     for user in banned_users:
-        banfile += "[x] {} - {}\n".format(user["name"], user["user_id"])
+        banfile += "[x] {} - {}\n".format(user["name"], user["user_id"], user["first_name"])
         if user["reason"]:
             banfile += "Reason: {}\n".format(user["reason"])
 
