@@ -211,7 +211,7 @@ def gbanlist(bot: Bot, update: Update):
 
     banfile = 'Screw these potatoes.\n'
     for user in banned_users:
-        banfile += "[x] {} - {}\n".format(user["name"], user["user_id"], user["first_name"])
+        banfile += "[x] {} - {}\n".format(user["name"], user["user_id"])
         if user["reason"]:
             banfile += "Reason: {}\n".format(user["reason"])
 
