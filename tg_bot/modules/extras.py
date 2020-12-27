@@ -241,7 +241,7 @@ def decide(bot: Bot, update: Update):
         if r <= 65:
             update.message.reply_text("Yes.")
         elif r <= 90:
-            update.message.reply_text("NoU.")
+            update.message.reply_text("No.")
         else:
             update.message.reply_text("Maybe.")
             
